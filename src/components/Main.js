@@ -3,7 +3,13 @@ import { api } from "../utils/api";
 import Card from "./Card";
 import "../index.css";
 
-const Main = ({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, onTrashClick }) => {
+const Main = ({
+  onEditProfile,
+  onAddPlace,
+  onEditAvatar,
+  onCardClick,
+  onTrashClick,
+}) => {
   const [userName, setUserName] = useState("");
   const [userDescription, setUserDescription] = useState("");
   const [userAvatar, setUserAvatar] = useState("");
@@ -60,7 +66,12 @@ const Main = ({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, onTrashCli
       <section className="elements">
         {cards.map((card) => {
           return (
-            <Card key={card._id} card={card} onTrashClick={onTrashClick} onCardClick={onCardClick} />
+            <Card
+              key={card._id}
+              card={card}
+              onTrashClick={onTrashClick}
+              onCardClick={onCardClick}
+            />
           );
         })}
       </section>
