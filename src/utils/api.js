@@ -62,6 +62,14 @@ class Api {
     }).then((res) => this._checkResponse(res));
   }
 
+  changeLikeCardStatus(id, isLiked) {
+    if (isLiked) {
+      return this.likeActiveInitialCards(id);
+    } else {
+      return this.likeEnabledInitialCards(id);
+    }
+  }
+
   likeActiveInitialCards(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",

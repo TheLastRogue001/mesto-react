@@ -1,18 +1,37 @@
+import { useContext } from "react";
 import "../index.css";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Card({ card, onCardClick, onTrashClick }) {
+function Card({ card, onCardClick, onTrashClick, onCardLike }) {
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = card.owner._id === currentUser?._id;
+  const isLiked = card.likes.some((i) => i._id === currentUser?._id);
+  const cardLikeButtonClassName = `element__like ${
+    isLiked && "element__like_active"
+  }`;
+
   const handleClick = () => {
     onCardClick(card);
   };
 
+  const handleLikeClick = () => {
+    onCardLike(card.likes, card._id);
+  };
+
+  const handleTrashClick = () => {
+    onTrashClick(card);
+  };
+
   return (
     <div className="element" key={card._id}>
-      <button
-        type="button"
-        aria-label="Удалить"
-        onClick={onTrashClick}
-        className="element__trash"
-      ></button>
+      {isOwn && (
+        <button
+          type="button"
+          aria-label="Удалить"
+          onClick={handleTrashClick}
+          className="element__trash"
+        />
+      )}
       <img
         src={card.link}
         alt={card.name}
@@ -24,8 +43,9 @@ function Card({ card, onCardClick, onTrashClick }) {
         <button
           type="button"
           aria-label="Нравится"
-          className="element__like"
-        ></button>
+          onClick={handleLikeClick}
+          className={cardLikeButtonClassName}
+        />
         <p className="element__like-count">{card.likes.length}</p>
       </div>
     </div>
