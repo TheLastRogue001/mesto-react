@@ -6,6 +6,7 @@ const PopupWithForm = ({
   isOpen,
   onClose,
   buttonText,
+  onSubmit,
   children,
 }) => {
   return (
@@ -16,12 +17,18 @@ const PopupWithForm = ({
           <button
             aria-label="Delete"
             type="submit"
+            onClick={onSubmit}
             className="popup__button popup__button_size"
           >
             Да
           </button>
         ) : (
-          <form className="popup__form" name={`popup-${name}`} noValidate>
+          <form
+            className="popup__form"
+            onSubmit={onSubmit}
+            name={`popup-${name}`}
+            noValidate
+          >
             {children}
             <button
               aria-label={buttonText}
