@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import "../index.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Card({ card, onCardClick, onTrashClick, onCardLike }) {
@@ -23,7 +22,7 @@ function Card({ card, onCardClick, onTrashClick, onCardLike }) {
   };
 
   return (
-    <div className="element" key={card._id}>
+    <div className="element">
       {isOwn && (
         <button
           type="button"

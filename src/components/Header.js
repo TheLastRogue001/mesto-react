@@ -1,5 +1,4 @@
 import Logo from "../images/logo_mesto.svg";
-import "../index.css";
 
 function Header() {
   return (

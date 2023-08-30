@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import "../index.css";
 import { api } from "../utils/api";
 import AddPlacePopup from "./AddPlacePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
@@ -31,9 +30,6 @@ function App() {
       .catch((err) => {
         console.log(`Ошибка данных: ${err}`);
       });
-  }, []);
-
-  useEffect(() => {
     api
       .getInitialCards()
       .then((initialCards) => {
@@ -118,20 +114,20 @@ function App() {
   };
 
   const handleEditAvatarClick = () => {
-    setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+    setIsEditAvatarPopupOpen(true);
   };
 
   const handleEditProfileClick = () => {
-    setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
+    setIsEditProfilePopupOpen(true);
   };
 
   const handleAddPlaceClick = () => {
-    setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
+    setIsAddPlacePopupOpen(true);
   };
 
   const handleTrashClick = (card) => {
     setSelectedCardtoTrash(card);
-    setIsTrashPopupOpen(!isTrashPopupOpen);
+    setIsTrashPopupOpen(true);
   };
 
   const handleCardClick = (card) => {

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../index.css";
 import PopupWithForm from "./PopupWithForm";
 
 function TrashPlacePopup({ isOpen, onClose, CardDelete, card }) {
