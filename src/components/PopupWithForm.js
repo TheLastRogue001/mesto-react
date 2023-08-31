@@ -25,7 +25,6 @@ const PopupWithForm = ({
             className="popup__form"
             onSubmit={onSubmit}
             name={`popup-${name}`}
-            noValidate
           >
             {children}
             <button
